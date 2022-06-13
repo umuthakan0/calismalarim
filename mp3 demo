@@ -1,0 +1,75 @@
+import random
+class Mp3():
+    def __init__(self,şarkılar=[]):
+        self.suancalansarkı=""
+        self.durum=True
+        self.şarkılar=şarkılar
+        self.ses=100
+    def sarkı_sec(self):
+        print("""LİSTEDEN ŞARKI SEÇİN:{}""".format(self.şarkılar))
+        secsarkı=input("LUTFEN SARKI SEÇİN")
+        while secsarkı in self.şarkılar:
+            self.suancalansarkı=secsarkı
+        while secsarkı != self.şarkılar:
+            secsarkı=input("LUTFEN GEÇERLİ BİR SARKI SEÇİN")
+    def sarkı_sil(self):
+        silsarkı=input("LUTFEN SİLMEK İSTEDİĞİNİZ ŞARKININ ADINI GİRİNİZ")
+        self.şarkılar.remove(silsarkı)
+    def sarkı_ekle(self):
+        eklead=input("LUTFEN BİR ŞARKI ADI GİRİNİZ")
+        with open("sarkilist.txt","r+") as dosya:
+            dosya.write("\n",eklead)
+    def ses_ac(self0):
+        sac=int(input("SES DEĞERİ"))
+        self.ses+=sac
+        print("GÜNCEL SES DEĞERİ:{}".format(self.ses))
+    def rastgele(self):
+        rastgeleş=random.choice(self.şarkılar)
+    def ses_kapa(self):
+        ska=int(input("SES DÜZEYİ"))
+        self.ses-=ska
+        print("GGÜNCEL SES DÜZEYİ")
+    def kapa(self):
+        self.durum=False
+    def menu(self):
+        print("""
+        *********MENU*********
+        """)
+        with open("sarkilist.txt") as dosya:
+            içerk=dosya.read()
+        print(içerk)
+        print("""
+        ŞUAN ÇALAN ŞARKI:{}
+        SES DÜZEYİ:{}
+        1.Şarkı ekle
+        2.SARKI SİL
+        3.ŞARKI SEÇ
+        4.SES AÇ
+        5.SES KAPA
+        6.PROGRAMI SONLANDIR
+        """.format(self.suancalansarkı,self.ses))
+    def secim(self):
+        sec=int(input("LÜTFEN BİR İŞLEM SEÇİNİZ:"))
+        while sec<1 or sec>7:
+            sec = int(input("LÜTFEN BELİRTİLEN DEĞERLER ARALIĞINDA SEÇİM YAPINIZ:"))
+        return sec
+    def calistır(self):
+        self.menu()
+        seçim=self.secim()
+        if seçim==1:
+            self.sarkı_ekle()
+        if seçim==2:
+            self.sarkı_sil()
+        if seçim==3:
+            self.sarkı_sec()
+        if seçim==4:
+            self.ses_ac()
+        if seçim==5:
+            self.ses_kapa()
+        if seçim==6:
+            self.kapa()
+
+mp3=Mp3()
+while mp3.durum:
+    mp3.calistır()
+print("PROGRAM SONLANDIRILDI")
