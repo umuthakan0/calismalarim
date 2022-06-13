@@ -1,0 +1,53 @@
+import json
+class Kullanicigiris():
+    def __init__(self,veritabanı={}):
+        self.durum=True
+        self.veritabanı={}
+        self.veritabanı["KULLANICILAR"]=[]
+
+    def giriş(self):
+        kişiad=input("USER NAME: ")
+        kişişifre=input("PASSWORD: ")
+
+    def cikis(self):
+        self.durum=False
+    def şifremiunuttum(self):
+        pass
+    def menü(self):
+        print("""
+        *****LOG İN or SİGN İN*****
+        
+        1.LOG İN 
+        2.SİGN İN 
+        3.I FORGET MY PASSWORD
+        4.EXİT""")
+    def sign_in(self):
+        username=input("USER NAME: ")
+        password=input("PASSWORD: ")
+        self.veritabanı["KULLANICILAR"].append(["kulad":"username","şifre":"password"])
+        with open("veritabanı.json","a") as dosya:
+            json.dump(self.veritabanı,dosya)
+    def seçim(self):
+        try:
+            Seçim = int(input("YOU DO CHOİCE..."))
+
+            if Seçim>1 or Seçim<4:
+                if Seçim==1:
+                    self.giriş()
+                if Seçim==2:
+                    self.sign_in()
+                if Seçim==3:
+                    self.şifremiunuttum()
+                if Seçim==4:
+                    self.cikis()
+            else:print("PLEASE YOU DO TRUE CHOİCE...")
+
+        except ValueError:
+            print("PLEASE YOU DO TRUE CHOİCE...")
+
+
+
+kullanicigiris=Kullanicigiris()
+while kullanicigiris.durum:
+    kullanicigiris.menü()
+    kullanicigiris.seçim()
