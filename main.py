@@ -1,9 +1,3 @@
-
-uyeler = {"üye":["ali","fatma","ayse"]}
-uyeler["üye"].append("turgut")
-print(uyeler["üye"])
-uyeler["üye"].remove("turgut")
-print(uyeler["üye"])
 import time
 
 print("lutfen saati ayarlayın")
