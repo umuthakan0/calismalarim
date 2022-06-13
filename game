@@ -1,0 +1,23 @@
+import random
+sayac=7
+while True:
+    a = random.randint(1,100)
+    for i in range(0, 7):
+        b = int(input("lutfen tahmininizi girin: "))
+        if a == b:
+            print("tebrikler sayıyı dogru tahmin ettiniz: ", a)
+            break
+        elif a < b:
+            print("sayı aşağıda !!!")
+        elif a > b:
+            print("sayı yukarıda!!1")
+        sayac -= 1
+        if sayac == 0:
+            print("oyunu kaybettiniz!!!,sayı: ",a)
+            break
+    secim=input("oyunu tekrar oynamak istiyor musunuz?... ")
+    if secim=="e" or secim=="E":
+        continue
+    elif secim=="h" or secim=="H":
+        print("oyundan çıktınız...")
+        break
