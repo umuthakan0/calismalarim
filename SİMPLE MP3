@@ -1,0 +1,5 @@
+import time
+import vlc
+p=vlc.MediaListPlayer("<<ses dosyanızın bulundugu yol>>")
+p.play()
+time.sleep(1000)
